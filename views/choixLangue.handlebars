@@ -1,0 +1,54 @@
+<div class="container">
+<h1>choixLangue</h1>
+
+<input type="button" value="اللغة العربية" onclick="AR()">
+<input type="button" value="Langue française" onclick="FR()">
+<input type="button" value="language English" onclick="AN()">
+</div>
+
+<script>
+    function AR(){
+        //alert("ela lah");
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            //sessionStorage.setItem("lastname", "Smith");
+            // Retrieve
+            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
+            sessionStorage.setItem("langue", "AR");
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+        window.location.assign("http://localhost:3000/modeCommande");
+    }
+
+    function FR(){
+        //alert("ela lah");
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            //sessionStorage.setItem("lastname", "Smith");
+            // Retrieve
+            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
+            sessionStorage.setItem("langue", "FR");
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+        window.location.assign("http://localhost:3000/modeCommande");
+    }
+
+    function AN(){
+        //alert("ela lah");
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            //sessionStorage.setItem("lastname", "Smith");
+            // Retrieve
+            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
+            sessionStorage.setItem("langue", "AN");
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+        window.location.assign("http://localhost:3000/modeCommande");
+    }
+</script>

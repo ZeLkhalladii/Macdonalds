@@ -1,0 +1,118 @@
+<br>
+
+<div class="container">
+    <section>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    {{!-- <a class="navbar-brand" href="/">Node Contacts App</a> --}}
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="FR()">FR</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="AN()">AN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="AR()">AR</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/panier">panier</a>
+                        </li>
+                        
+                    </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section><br>
+</div>
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <img src="" alt="">
+                <th scope="col">image</th>
+                <th scope="col">Name prodact</th>
+                <th scope="col">contity</th>
+                <th scope="col">action</th>
+            </tr>
+        </thead>
+        <tbody id="body_table">
+            
+        </tbody>
+    </table>
+
+    
+</div>
+
+
+<script>
+
+    function onload_start(){
+
+        /*
+        var menuFR =document.getElementById("menuFR").value;
+        var menuAN =document.getElementById("menuAN").value;
+        var menuAR =document.getElementById("menuAR").value;
+        var Result =document.getElementById("Result_Nameprodact");
+
+        if (typeof(Storage) !== "undefined") {
+            // Retrieve
+            //alert(sessionStorage.getItem("langue"));
+            if(sessionStorage.getItem("langue") == "FR"){
+                //alert("menuFR");
+                Result.value =menuFR;
+                Result.innerHTML =menuFR;
+            }else if(sessionStorage.getItem("langue") == "AN"){
+                //alert("menuAN");
+                Result.value =menuAN;
+                Result.innerHTML =menuAN;
+            }else if(sessionStorage.getItem("langue") == "AR"){
+                //alert("menuAR");
+                Result.value =menuAR;
+                Result.innerHTML =menuAR;
+            }
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+        */
+
+        var body_table = document.getElementById("body_table");
+
+        let old_data = JSON.parse(localStorage.getItem('data'));
+
+        for (i = 0; i < old_data.length; i++) {
+            //console.log(old_data[i].contityData);//<tr><td>Mark</td></tr>
+            body_table.innerHTML += '<tr><td><img src="/images/'+old_data[i].imgchemainData+'/../'+old_data[i].imgData+'" alt=""></td> <td>'+old_data[i].nameData+'</td>  <td><input type="number" name="contityVal" id="contityVal'+i+'" placeholder="taper ure valuer" value="'+old_data[i].contityData+'">   </td> <td><input type="button" value="updatin" onclick="updateval('+i+')"></td></tr>';
+        }
+        
+    }
+
+    function updateval(i){
+        var i = i
+        var newVal = document.getElementById("contityVal"+i).value;
+        alert(newVal);
+
+        let old_data = JSON.parse(localStorage.getItem('data'));
+
+        old_data[i].contityData = newVal;
+        localStorage.setItem('data' , JSON.stringify(old_data));
+
+
+
+
+
+    }
+
+   
+    //end update
+</script>
+{{!-- end for test --}}

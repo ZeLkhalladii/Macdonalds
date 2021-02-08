@@ -1,0 +1,56 @@
+<h1>mode de la commande</h1>
+<a href="/home">GO</a>
+
+<div id="contentmodecommande">
+    {{!-- <input type="button" value="sur place" onclick="sur_place()"> --}}
+    {{!-- <input type="button" value="emporter" onclick="emporter()"> --}}
+    
+</div>
+
+<script>
+
+    function onload_start(){
+
+        if (typeof(Storage) !== "undefined") {
+            // Retrieve
+            //FRANCAIS
+            if(sessionStorage.getItem("langue") == "FR"){
+
+                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="sur place" onclick="sur_place()"> <input type="button" value="emporter" onclick="emporter()">';
+                
+            }else if(sessionStorage.getItem("langue") == "AN"){
+                //ANGLISH
+                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="on the spot" onclick="sur_place()"> <input type="button" value="carry" onclick="emporter()">';
+            }else if(sessionStorage.getItem("langue") == "AR"){
+                //alert("aarr");
+                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="هنا" onclick="sur_place()"> <input type="button" value="ولا ديه معاك" onclick="emporter()">';
+            }
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+    }
+
+
+    function sur_place(){
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            sessionStorage.setItem("modeCommande", "sur_place");
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+        window.location.assign("http://localhost:3000/home");
+    }
+
+    function emporter(){
+        if (typeof(Storage) !== "undefined") {
+            // Store
+            sessionStorage.setItem("modeCommande", "emporter");
+        } else {
+            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            alert("Sorry, your browser does not support Web Storage...");
+        }
+        window.location.assign("http://localhost:3000/home");
+    }
+</script>
