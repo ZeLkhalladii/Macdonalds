@@ -1,29 +1,25 @@
-<br>
 
+<br>
 <div class="container">
-    <section>
+    <section style="margin-top: -17px;">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    {{!-- <a class="navbar-brand" href="/">Node Contacts App</a> --}}
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" onclick="FR()">FR</a>
+                        <li class="nav-item" style="cursor: pointer;">
+                            <a class="nav-link" onclick="FR()" style="color: #FDC82F;">FR</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" onclick="AN()">AN</a>
+                        <li class="nav-item" style="cursor: pointer;">
+                            <a class="nav-link" onclick="AN()" style="color: #FDC82F;">AN</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" onclick="AR()">AR</a>
+                        <li class="nav-item" style="cursor: pointer;">
+                            <a class="nav-link" onclick="AR()" style="color: #FDC82F;">AR</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/panier">panier</a>
-                        </li>
-                        
+                      
                     </ul>
 
                     </div>
@@ -37,21 +33,34 @@
     <input type="hidden" id="menuFR" value="{{menuFR}}">
     <input type="hidden" id="menuAN" value="{{menuAN}}">
     <input type="hidden" id="menuAR" value="{{menuAR}}">
+    <input type="hidden" id="prixVal" value="{{prix}}">
 
-    <h1 id="Result_Nameprodact"></h1>
-    <h1>{{id}}</h1>
-    <img src="/images/{{chemin_img}}/lg_{{img}}" alt="">
-    <input type="hidden" name="imgchemain" id="imgchemain" value="{{chemin_img}}">
-    <input type="hidden" name="imgpromenu" id="imgpromenu" value="{{img}}">
-    {{!-- <img src="/public/images/images_Boissons/large_image/../" alt=""> --}}
-
+    <center>
+        <h1 id="Result_Nameprodact" ></h1>
+        {{!-- <h1>{{id}}</h1> --}}
+        <img src="/images/{{chemin_img}}/lg_{{img}}" alt="">
+        <input type="hidden" name="imgchemain" id="imgchemain" value="{{chemin_img}}">
+        <input type="hidden" name="imgpromenu" id="imgpromenu" value="{{img}}">
+    </center>
+    <center>
+    <h2>
+        <span style="color: red;">prix : </span><span id="prix">{{prix}}</span><span> DH</span>
+    </h2>
     
 </div>
 
-{{!-- <div class="container">
-    <input type="number" id="contity" >
-    <input type="button" id="add_panier" value="Ajouter A La Panier" onclick="addPanier()">
-</div> --}}
+
+<center>
+<div class="container">
+    <h1 style="color: #FDC82F;">Value</h1>
+    
+    <div class="input-group mb-3" style="width: 50%;">
+        <input type="number" class="form-control" name="contityVal" id="contityVal" placeholder="taper ure value">
+        <input type="button" value="Save" id="btnSave" onclick="savee()" class="btn btn-outline-secondary" >
+    </div>
+    <h1 id="showdata"></h1>
+</div>
+</center>
 
 <script>
 
@@ -64,22 +73,17 @@
 
         if (typeof(Storage) !== "undefined") {
             // Retrieve
-            //alert(sessionStorage.getItem("langue"));
             if(sessionStorage.getItem("langue") == "FR"){
-                //alert("menuFR");
                 Result.value =menuFR;
                 Result.innerHTML =menuFR;
             }else if(sessionStorage.getItem("langue") == "AN"){
-                //alert("menuAN");
                 Result.value =menuAN;
                 Result.innerHTML =menuAN;
             }else if(sessionStorage.getItem("langue") == "AR"){
-                //alert("menuAR");
                 Result.value =menuAR;
                 Result.innerHTML =menuAR;
             }
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
     }
@@ -92,14 +96,10 @@
     function FR(){
 
         if (typeof(Storage) !== "undefined") {
-            // Store
-            //sessionStorage.setItem("lastname", "Smith");
             // Retrieve
-            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
             sessionStorage.setItem("langue", "FR");
             alert(sessionStorage.getItem("langue"));
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
          Result.innerHTML =menuFR;
@@ -108,13 +108,9 @@
     function AN(){
         if (typeof(Storage) !== "undefined") {
             // Store
-            //sessionStorage.setItem("lastname", "Smith");
-            // Retrieve
-            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
             sessionStorage.setItem("langue", "AN");
             alert(sessionStorage.getItem("langue"));
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
          Result.innerHTML =menuAN;
@@ -122,306 +118,50 @@
 
     function AR(){
         if (typeof(Storage) !== "undefined") {
-            // Store
-            //sessionStorage.setItem("lastname", "Smith");
-            // Retrieve
-            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
             sessionStorage.setItem("langue", "AR");
             alert(sessionStorage.getItem("langue"));
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
          Result.innerHTML =menuAR;
     }
-
-    function addPanier(){
-
-        //alert("addPanier");
-        //alert(contity);
-
-        //valeurContity
-        contity = document.getElementById("contity").value;
-        var valeurContity = [];
-        var valeurContityStored = [];
-        valeurContity.push(contity);
-
-        //Result_Nameprodact
-        var Result_Nameprodact = document.getElementById("Result_Nameprodact").value;
-        var valeurNameProdact = [];
-        var valeurNameProdactStored = [];
-        valeurNameProdact.push(Result_Nameprodact);
-        alert("ha l2jeb");
-        alert(Result_Nameprodact);
-
-        //imgchemain
-        var imgchemain = document.getElementById("imgchemain").value;
-        var valeurimgchemain = [];
-        var valeurimgchemainStored = [];
-        valeurimgchemain.push(imgchemain);
-        alert("imgchemain : " + imgchemain);
-
-        //imgpromenu
-        var imgpromenu = document.getElementById("imgpromenu").value;
-        var valeurimgpromenu = [];
-        var valeurimgpromenuStored = [];
-        valeurimgpromenu.push(imgpromenu);
-        alert("imgpromenu : " + imgpromenu);
-
-        if (typeof(Storage) !== "undefined") {
-            // Store
-            //sessionStorage.setItem("lastname", "Smith");
-            // Retrieve
-            //document.getElementById("result").innerHTML = sessionStorage.getItem("lastname");
-
-
-            //------------------------------------------------------------------
-            //valeurContity
-            if(sessionStorage.getItem("choixcontity") == ""){
-                sessionStorage.setItem("choixcontity", " ");
-                alert("vffv11");
-            }
-            
-            valeurContityStored.push(sessionStorage.getItem("choixcontity"));
-            valeurContity += valeurContityStored;
-            sessionStorage.setItem("choixcontity", valeurContity);
-            alert(sessionStorage.getItem("choixcontity"));
-            //------------------------------------------------------------------
-
-            
-            //------------------------------------------------------------------
-            //Result_Nameprodact
-            if(sessionStorage.getItem("ResultNameprodact") == ""){
-                sessionStorage.setItem("ResultNameprodact", " ");
-                alert("vffv");
-            }
-            
-            valeurNameProdactStored.push(sessionStorage.getItem("ResultNameprodact"));
-            valeurNameProdact += valeurNameProdactStored;
-            sessionStorage.setItem("ResultNameprodact", valeurNameProdact);
-            alert(sessionStorage.getItem("ResultNameprodact"));
-            //------------------------------------------------------------------
-
-
-            //------------------------------------------------------------------
-            //imgchemain
-            if(sessionStorage.getItem("imgchemain") == ""){
-                sessionStorage.setItem("imgchemain", " ");
-                alert("imgchemainbda");
-            }
-            
-            valeurimgchemainStored.push(sessionStorage.getItem("imgchemain"));
-            valeurimgchemain += valeurimgchemainStored;
-            sessionStorage.setItem("imgchemain", valeurimgchemain);
-            alert(sessionStorage.getItem("imgchemain"));
-            //------------------------------------------------------------------
-
-
-            //------------------------------------------------------------------
-            //imgpromenu
-            if(sessionStorage.getItem("imgpromenu") == ""){
-                sessionStorage.setItem("imgpromenu", " ");
-                alert("imgpromenubda");
-            }
-            
-            valeurimgpromenuStored.push(sessionStorage.getItem("imgpromenu"));
-            valeurimgpromenu += valeurimgpromenuStored;
-            sessionStorage.setItem("imgpromenu", valeurimgpromenu);
-            alert(sessionStorage.getItem("imgpromenu"));
-            //------------------------------------------------------------------
-            
-
-
-            /*
-            sessionStorage.setItem("choixcontity", "");
-            sessionStorage.setItem("ResultNameprodact", "");
-            */
-
-            /*
-            alert("vahedfoor");
-            for (i = 0; i < sessionStorage.getItem("imgchemain").length; i++) {
-                alert(sessionStorage.getItem("imgchemain")[i]);
-            }
-            */
-
-
-
-        } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-            alert("Sorry, your browser does not support Web Storage...");
-        }
-        
-
-    }
+  
 </script>
 
-
-
-{{!-- start for test --}}
-{{!-- <input type="button" value="fortest" onclick="fortest()">
-<input type="text" id="textvval" > --}}
-<hr><hr>
-<div class="container">
-    <h1>Value</h1>
-    <input type="number" name="contityVal" id="contityVal" placeholder="taper ure value">
-    {{!-- <input type="text" name="inputname" id="inputname" placeholder="taper ure value name"> --}}
-    {{!-- <input type="text" name="inputimg" id="inputimg" placeholder="taper ure value img"> --}}
-    <input type="button" value="Save" id="btnSave" onclick="savee()">
-    {{!-- <input type="button" value="view" onclick="vieww()"> --}}
-    <h1 id="showdata"></h1>
-</div>
-
 <script>
-    /*
-    function fortest(){
-        alert("star for test");
-    }
-    */
-
-    //start update
-
-    
-    //VERSION 1
-    
-    /*
-    function savee2(){
-        var new_data = document.getElementById("input").value;
-        if(localStorage.getItem('dataa') == null){
-            localStorage.setItem('dataa','[]');
-        }
-        var old_data = JSON.parse(localStorage.getItem('dataa'));
-        old_data.push(new_data);
-        localStorage.setItem('dataa' , JSON.stringify(old_data));
-    }
-    function vieww(){
-        if(localStorage.getItem('dataa') != null){
-            document.getElementById("showdata").innerHTML = JSON.parse(localStorage.getItem('dataa'));
-        }
-    }
-    */
-    
-    
-
-    
-    /*
-    //VERSION 2
-    function savee(){
-        var new_data = document.getElementById("input").value;
-        var new_data = document.getElementById("inputname").value;
-        var new_data = document.getElementById("inputimg").value;
-        
-        if(localStorage.getItem('data') == null){
-            
-            //var obj = {};
-            //obj.name = "test";
-            //obj.no   = "1234";
-            
-            var obj = {
-                name : "test",
-                age  : "1234"
-            };
-            
-            
-            localStorage.setItem("data", JSON.stringify(obj));
-        }
-        //var old_data = JSON.parse(localStorage.getItem('data'));
-        //old_data.push(new_data);
-        //localStorage.setItem('data' , JSON.stringify(old_data));
-    }
-    function vieww(){
-        if(localStorage.getItem('data') != null){
-            document.getElementById("showdata").innerHTML = JSON.parse(localStorage.getItem('data'));
-        }
-    }
-    */
-
-    //VERSION 3
-    /*
-
-            if(localStorage.getItem('data') == null){
-                let obj1 = [
-                {contityData: "contityVal", nameData: "nameVal", imgData: "imgVal"}
-                ]
-                localStorage.setItem("data", JSON.stringify(obj1));
-            }
-
-    function savee(){
-        let contityVal = document.getElementById("input").value;
-        let nameVal = document.getElementById("inputname").value;
-        let imgVal = document.getElementById("inputimg").value;
-
-        let obj2 = {contityData: contityVal, nameData: nameVal, imgData: imgVal}
-
-        let old_data = JSON.parse(localStorage.getItem('data'));
-
-        old_data.push({contityData: contityVal, nameData: nameVal, imgData: imgVal})
-
-        localStorage.setItem('data' , JSON.stringify(old_data));
-
-        /*
-        console.log(typeof(obj2));
-        console.log(typeof(old_data));
-
-        let thisdata = old_data.push(obj2)
-        console.log(thisdata)
-        */
-        
-    //}
-
-
-
-    //VERSION4
 
     function savee(){
         let contityVal = document.getElementById("contityVal").value;
         let nameVal = document.getElementById("menuFR").value;
         var imgchemainVal = document.getElementById("imgchemain").value;
         let imgVal = document.getElementById("imgpromenu").value;
+        let prixVal = document.getElementById("prixVal").value;
 
         if(localStorage.getItem('data') == null){
             let obj1 = [
-            {contityData: contityVal, nameData: nameVal, imgchemainData: imgchemainVal,imgData:  imgVal}
+            {contityData: contityVal, nameData: nameVal, imgchemainData: imgchemainVal,imgData:  imgVal,prixData:  prixVal}
             ]
             localStorage.setItem("data", JSON.stringify(obj1));
             console.log("== null");
-            document.getElementById("btnSave").value="Dor 100";
+            document.getElementById("btnSave").value="Save";
             document.getElementById("btnSave").disabled = true;
         }else{
-            //let obj2 = {contityData: contityVal, nameData: nameVal, imgData: imgVal}
 
             let old_data = JSON.parse(localStorage.getItem('data'));
 
-            old_data.push({contityData: contityVal, nameData: nameVal, imgchemainData: imgchemainVal,imgData:  imgVal})
+            old_data.push({contityData: contityVal, nameData: nameVal, imgchemainData: imgchemainVal,imgData:  imgVal,prixData:  prixVal})
 
             localStorage.setItem('data' , JSON.stringify(old_data));
             console.log("== else");
-            document.getElementById("btnSave").value="Dor 100";
+            document.getElementById("btnSave").value="Save";
             document.getElementById("btnSave").disabled = true;
-            //window.location.assign("http://localhost:3000/panier")
         }
-
-        /*
-        console.log(typeof(obj2));
-        console.log(typeof(old_data));
-
-        let thisdata = old_data.push(obj2)
-        console.log(thisdata)
-        */
         
     }
-
-
-
-
-    
 
     function vieww(){
         if(localStorage.getItem('data') != null){
             document.getElementById("showdata").innerHTML = JSON.parse(localStorage.getItem('data'));
         }
     }
-    
-
-    //end update
 </script>
-{{!-- end for test --}}

@@ -1,10 +1,14 @@
-<h1>mode de la commande</h1>
-<a href="/home">GO</a>
 
-<div id="contentmodecommande">
-    {{!-- <input type="button" value="sur place" onclick="sur_place()"> --}}
-    {{!-- <input type="button" value="emporter" onclick="emporter()"> --}}
+
+<br><br>
+<div class="container">
+    <center>
+        <h1 style="color: #FDC82F;">Mode De La Commande</h1>
+        <img src="https://www.linfodurable.fr/sites/linfodurable/files/styles/landscape_w800/public/2019-03/shutterstock_1023412000.jpg?h=68a5e204&itok=HOpFPvD8" alt="" srcset="" style="width: 500px; border-radius:20px;"><br><br>
+        <div id="contentmodecommande">
     
+        </div>
+    </center>
 </div>
 
 <script>
@@ -16,17 +20,16 @@
             //FRANCAIS
             if(sessionStorage.getItem("langue") == "FR"){
 
-                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="sur place" onclick="sur_place()"> <input type="button" value="emporter" onclick="emporter()">';
+                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="sur place" class="btn btn-outline-secondary" onclick="sur_place()" style="background-color: #FDC82F; border:red"> <input type="button" value="emporter" class="btn btn-outline-secondary" onclick="emporter()" style="background-color: #FDC82F; border:red">';
                 
             }else if(sessionStorage.getItem("langue") == "AN"){
                 //ANGLISH
-                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="on the spot" onclick="sur_place()"> <input type="button" value="carry" onclick="emporter()">';
+                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="on the spot" class="btn btn-outline-secondary" onclick="sur_place()" style="background-color: #FDC82F; border:red"> <input type="button" value="carry" class="btn btn-outline-secondary" onclick="emporter()" style="background-color: #FDC82F; border:red">';
             }else if(sessionStorage.getItem("langue") == "AR"){
                 //alert("aarr");
-                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="هنا" onclick="sur_place()"> <input type="button" value="ولا ديه معاك" onclick="emporter()">';
+                document.getElementById("contentmodecommande").innerHTML = '<input type="button" value="هنا بالموقع" class="btn btn-outline-secondary" onclick="sur_place()" style="background-color: #FDC82F; border:red"> <input type="button" value="تاخده معك" class="btn btn-outline-secondary" onclick="emporter()" style="background-color: #FDC82F; border:red">';
             }
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
     }
@@ -37,7 +40,6 @@
             // Store
             sessionStorage.setItem("modeCommande", "sur_place");
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
         window.location.assign("http://localhost:3000/home");
@@ -48,7 +50,6 @@
             // Store
             sessionStorage.setItem("modeCommande", "emporter");
         } else {
-            //document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             alert("Sorry, your browser does not support Web Storage...");
         }
         window.location.assign("http://localhost:3000/home");
